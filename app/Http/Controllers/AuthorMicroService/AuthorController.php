@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AuthorMicroService;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+// use Illuminate\Http\Response;
 use App\Traits\ApiResponser;
-use App\Services\AuthorService;
+// use App\Services\AuthorService;
 class AuthorController extends Controller
 {
     use ApiResponser;
@@ -19,15 +20,16 @@ class AuthorController extends Controller
      *
      * @return void
      */
-    public function __construct(AuthorService $authorService) {
-        $this->authorService = $authorService;
-    }
+    // public function __construct(AuthorService $authorService) {
+    //     $this->authorService = $authorService;
+    // }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index() {
+        return "List of Authors!";
     }
     /**
      * Store a newly created resource in storage.
