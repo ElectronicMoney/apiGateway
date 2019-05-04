@@ -39,4 +39,13 @@ class  AuthorService
     public function createAuthor($data) {
         return $this->httpRequest('POST', '/authors', $data);
     }
+
+    /**
+     * get author from authors micro service
+     * @param int $author
+     * @return string
+     */
+    public function getAuthor($authorId) {
+        return $this->httpRequest('GET', "/authors/{$authorId}");
+    }
 }
