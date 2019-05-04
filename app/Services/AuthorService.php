@@ -13,7 +13,7 @@ class  AuthorService
     public $baseUri;
 
     /**
-     * Create a new Author instance.
+     * Creating a new Author instance.
      *
      * @return void
      */
@@ -23,8 +23,8 @@ class  AuthorService
     }
 
     /**
-     * get the list of authors from the Author Service
-     *
+     * Fetching the list of authors from the Author Service
+     * @param void
      * @return string
      */
     public function getAuthors() {
@@ -32,7 +32,7 @@ class  AuthorService
     }
 
     /**
-     * create author from authors micro service
+     * creating an author from authors micro service
      * @param array $data
      * @return string
      */
@@ -41,11 +41,21 @@ class  AuthorService
     }
 
     /**
-     * get author from authors micro service
-     * @param int $author
+     * Fetching an author instance from authors micro service
+     * @param int $authorId
      * @return string
      */
     public function getAuthor($authorId) {
         return $this->httpRequest('GET', "/authors/{$authorId}");
+    }
+
+    /**
+     * updating an author instance using authors micro service
+     * @param array $data
+     * @param int $authorId
+     * @return string
+     */
+    public function editAuthor($data, $authorId) {
+        return $this->httpRequest('PUT', "/authors/{$authorId}", $data);
     }
 }

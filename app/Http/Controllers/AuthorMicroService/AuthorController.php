@@ -57,6 +57,7 @@ class AuthorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $author) {
+        return $this->successResponse($this->authorService->editAuthor($request->all(), $author), Response::HTTP_CREATED);
     }
     /**
      * Remove the specified resource from storage.
