@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Traits\ApiResponser;
+use App\Services\AuthorService;
 use App\Services\BookService;
 
 class BookController extends Controller
@@ -16,6 +17,7 @@ class BookController extends Controller
      * The service to consume the book micro service
      * @var string
      */
+    public $authorService;
     public $bookService;
 
     /**
@@ -23,7 +25,8 @@ class BookController extends Controller
      *
      * @return void
      */
-    public function __construct(BookService $bookService) {
+    public function __construct(AuthorService $authorService, BookService $bookService) {
+        $this->authorService = $authorService;
         $this->bookService = $bookService;
     }
 
@@ -64,6 +67,9 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $book) {
+        //get an id using the specified author_id
+        $this->authorService->getAuthor($request->input('author_id'));
+
         return $this->successResponse($this->bookService->editBook($request->all(), $book), Response::HTTP_CREATED);
     }
 
