@@ -7,14 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Traits\ApiResponser;
 use App\Services\AuthorService;
+
 class AuthorController extends Controller
 {
     use ApiResponser;
+
     /**
      * The service to consume the authors micro service
      * @var string
      */
     public $authorService;
+
     /**
      * Create a new controller instance.
      *
@@ -23,6 +26,7 @@ class AuthorController extends Controller
     public function __construct(AuthorService $authorService) {
         $this->authorService = $authorService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,6 +35,7 @@ class AuthorController extends Controller
     public function index() {
         return $this->successResponse($this->authorService->getAuthors());
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -40,6 +45,7 @@ class AuthorController extends Controller
     public function store(Request $request) {
         return $this->successResponse($this->authorService->createAuthor($request->all()), Response::HTTP_CREATED);
     }
+
     /**
      * Display the specified resource.
      *
@@ -49,6 +55,7 @@ class AuthorController extends Controller
     public function show($author) {
         return $this->successResponse($this->authorService->getAuthor($author));
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -59,6 +66,7 @@ class AuthorController extends Controller
     public function update(Request $request, $author) {
         return $this->successResponse($this->authorService->editAuthor($request->all(), $author), Response::HTTP_CREATED);
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -68,4 +76,5 @@ class AuthorController extends Controller
     public function destroy($author) {
         return $this->successResponse($this->authorService->deleteAuthor($author));
     }
+
 }
