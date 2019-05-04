@@ -17,7 +17,6 @@ class  BookService
      * @return void
      */
     public function __construct() {
-        $this->baseUri = 'http://books.blog.lan';
-        // $this->baseUri = config('services.books.base_uri');
+        $this->baseUri = config('services.books.base_uri');
     }
 }

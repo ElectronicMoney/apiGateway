@@ -18,8 +18,8 @@ class  AuthorService
      * @return void
      */
     public function __construct() {
-        $this->baseUri = 'http://authors.blog.lan';
-        // $this->baseUri = config('services.authors.base_uri');
+        // $this->baseUri = 'http://authors.blog.lan';
+        $this->baseUri = config('services.authors.base_uri');
     }
 
     /**
