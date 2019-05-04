@@ -4,9 +4,8 @@ namespace App\Http\Controllers\BookMicroService;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use Illuminate\Http\Response;
 use App\Traits\ApiResponser;
-// use App\Services\BookService;
+use App\Services\BookService;
 class BookController extends Controller
 {
     use ApiResponser;
@@ -20,9 +19,9 @@ class BookController extends Controller
      *
      * @return void
      */
-    // public function __construct(BookService $bookService) {
-    //     $this->bookService = $bookService;
-    // }
+    public function __construct(BookService $bookService) {
+        $this->bookService = $bookService;
+    }
     /**
      * Display a listing of the resource.
      *
