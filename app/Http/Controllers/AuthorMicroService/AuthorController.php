@@ -66,5 +66,6 @@ class AuthorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($author) {
+        return $this->successResponse($this->authorService->deleteAuthor($author));
     }
 }

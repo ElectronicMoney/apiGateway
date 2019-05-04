@@ -18,7 +18,6 @@ class  AuthorService
      * @return void
      */
     public function __construct() {
-        // $this->baseUri = 'http://authors.blog.lan';
         $this->baseUri = config('services.authors.base_uri');
     }
 
@@ -57,5 +56,14 @@ class  AuthorService
      */
     public function editAuthor($data, $authorId) {
         return $this->httpRequest('PUT', "/authors/{$authorId}", $data);
+    }
+
+    /**
+     * Deleting an author instance from authors micro service
+     * @param int $authorId
+     * @return string
+     */
+    public function deleteAuthor($authorId) {
+        return $this->httpRequest('DELETE', "/authors/{$authorId}");
     }
 }
